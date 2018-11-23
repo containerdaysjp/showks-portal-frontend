@@ -18,9 +18,7 @@ if (process.browser) {
   require('ie-buster')
 }
 import io from 'socket.io-client'
-const socket = io('http://localhost:8080', {
-  path: '/notification'
-})
+const socket = io('http://localhost:8080')
 
 export default {
   //   components: {
