@@ -1,3 +1,3 @@
 module.exports = {
-  apiBaseUrl: 'http://localhost:8000'
+  apiBaseUrl: 'http://aggregator.stg.showks.containerdays.jp/'
 }

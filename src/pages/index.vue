@@ -31,9 +31,7 @@
 import fetch from 'isomorphic-fetch'
 export default {
   async asyncData() {
-    const response = await fetch(
-      process.env.apiBaseUrl
-    )
+    const response = await fetch(process.env.apiBaseUrl + 'instances')
     const instances = await response.json()
     return { instances }
   },
