@@ -12,7 +12,7 @@
           <el-card class="card">
             <a :href="instance.linkUrl">
               <img
-                :src="'http://aggregator.stg.showks.containerdays.jp' + instance.thumbnailUrl"
+                :src="'PLACEHOLDERURL' + instance.thumbnailUrl"
                 class="image"
               >
             </a>
@@ -48,9 +48,7 @@
 import fetch from 'isomorphic-fetch'
 export default {
   async asyncData() {
-    const response = await fetch(
-      'http://aggregator.stg.showks.containerdays.jp/instances'
-    )
+    const response = await fetch('PLACEHOLDERURL' + '/instances')
     const instances = await response.json()
     return { instances }
   },
