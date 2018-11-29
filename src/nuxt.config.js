@@ -90,6 +90,7 @@ module.exports = {
         href: '/favicon.png',
         sizes: '16x16'
       }
+    ]
   },
 
   /*
@@ -107,7 +108,7 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['@/plugins/element-ui'],
+  plugins: ['@/plugins/element-ui', '@/plugins/font-awesome'],
 
   /*
    ** Nuxt.js modules

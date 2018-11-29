@@ -7,17 +7,34 @@
       <el-row>
         <el-col
           v-for="instance in instances"
-          :span="4"
-          :key="instance.id"
-        >
-          <el-card :body-style="{ padding: '0px' }">
-            <a :href="instance.linkUrl"><img
-              :src="'http://aggregator.stg.showks.containerdays.jp' + instance.thumbnailUrl"
-              class="image"></a>
+          :span="6"
+          :key="instance.id">
+          <el-card class="card">
+            <a :href="instance.linkUrl">
+              <img
+                :src="'PLACEHOLDERURL' + instance.thumbnailUrl"
+                class="image"
+              >
+            </a>
             <div style="padding: 14px;">
-              <span>{{ instance.author.userName }}</span>
+              <el-tag type="info">{{ instance.author.userName }}
+                <a
+                  :href="'https://twitter.com/' + instance.author.twitterId"
+                  target="_blank">
+                  <font-awesome-icon
+                    :icon="['fab', 'twitter']"
+                    class="icon alt"/>
+                </a>
+                <a
+                  :href="'https://github.com/' + instance.author.gitHubId"
+                  target="_blank">
+                  <font-awesome-icon
+                    :icon="['fab', 'github']"
+                    class="icon alt"/>
+              </a></el-tag>
+              <el-tag>{{ instance.author.comment }}</el-tag>
               <div class="bottom clearfix">
-                <time class="time">{{ currentDate }}</time>
+                <time class="time">{{ dateFormat(instance.createdAt ) }}</time>
               </div>
             </div>
           </el-card>
@@ -31,15 +48,31 @@
 import fetch from 'isomorphic-fetch'
 export default {
   async asyncData() {
-    const response = await fetch(
-      'http://aggregator.stg.showks.containerdays.jp/instances'
-    )
+    const response = await fetch('PLACEHOLDERURL' + '/instances')
     const instances = await response.json()
     return { instances }
   },
-  data() {
-    return {
-      currentDate: new Date()
+  methods: {
+    dateFormat(createdAt) {
+      const date = new Date(createdAt)
+      const y = date.getFullYear()
+      const m = date.getMonth() + 1
+      const d = date.getDate()
+      const h = date.getHours() < 10 ? '0' + date.getHours() : date.getHours()
+      const i =
+        date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()
+      const s =
+        date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds()
+
+      if (m < 10) {
+        m = '0' + m
+      }
+      if (d < 10) {
+        d = '0' + d
+      }
+
+      // フォーマット整形済みの文字列を戻り値にする
+      return y + '/' + m + '/' + d + ' ' + h + ':' + i + ':' + s
     }
   }
 }
@@ -48,6 +81,8 @@ export default {
 <style>
 .container {
   min-height: 100vh;
+  width: 80%;
+  margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -83,6 +118,21 @@ export default {
 .image {
   width: 100%;
   display: block;
+}
+.card {
+  margin: 5px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: flex;
+  -webkit-box-lines: multiple;
+  -moz-box-lines: multiple;
+  -webkit-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 .clearfix:before,
 .clearfix:after {
