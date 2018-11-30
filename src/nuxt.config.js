@@ -32,11 +32,11 @@ module.exports = {
         name: 'og:description',
         content: 'Portal app for showKs'
       },
-      // {
-      //   hid: "og:image",
-      //   name: "og:image",
-      //   content: "https://showks.containerdays.jp/img/icons/ogp.jpg"
-      // },
+      {
+        hid: 'og:image',
+        name: 'og:image',
+        content: 'PLACEHOLDERURL/img/showKs-icon.png'
+      },
       {
         hid: 'og:image:width',
         name: 'og:image:width',
@@ -50,7 +50,7 @@ module.exports = {
       {
         hid: 'og:url',
         name: 'og:url',
-        content: 'https://showks.containerdays.jp/'
+        content: 'PLACEHOLDERURL'
       },
       {
         hid: 'og:type',
@@ -76,12 +76,12 @@ module.exports = {
         hid: 'twitter:creator',
         name: 'twitter:creator',
         content: '@containerdaysjp'
+      },
+      {
+        hid: 'twitter:image',
+        name: 'twitter:image',
+        content: 'PLACEHOLDERURL/img/showKs-icon.png'
       }
-      // {
-      //   hid: "twitter:image",
-      //   name: "twitter:image",
-      //   content: "https://showks.containerdays.jp/img/icons/ogp.jpg"
-      // }
     ],
     link: [
       {
