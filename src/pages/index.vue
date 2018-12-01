@@ -37,14 +37,7 @@ export default {
   },
   mounted() {
     setInterval(function() {
-      axios
-        .get('PLACEHOLDERURL' + '/instances')
-        .then(response => {
-          instances = response.data
-        })
-        .catch(error => {
-          console.log(error)
-        })
+      asyncData()
     }, 5000)
   },
   beforeDestroy() {
