@@ -2,25 +2,23 @@
   <div class="card">
     <div class="card-image">
       <figure class="image is-4by3">
-        <img
-          :src="'http://aggregator.stg.showks.containerdays.jp' + thumbnailUrl"
-          :href="gitHubId"
-          alt="Placeholder image">
+        <a :href="linkUrl"><img
+          :src="'PLACEHOLDERURL' + thumbnailUrl"
+          alt="Placeholder image"></a>
       </figure>
     </div>
     <div class="card-content">
       <div class="media">
         <div class="media-left">
           <figure class="image is-48x48">
-            <img
+            <a :href="'https://github.com/' + gitHubId"><img
               :src="'https://avatars.githubusercontent.com/' + gitHubId"
-              :href="'https://github.com/' + gitHubId"
-              alt="Placeholder image">
+              alt="Placeholder image"></a>
           </figure>
         </div>
         <div class="media-content">
           <p class="title is-4">{{ userName }}</p>
-          <p class="subtitle is-6">@johnsmith</p>
+          <p class="subtitle is-6">{{ twitterId }}</p>
         </div>
       </div>
 
