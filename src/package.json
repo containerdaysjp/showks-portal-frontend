@@ -14,12 +14,13 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.0.0",
+    "@nuxtjs/bulma": "^1.2.0",
+    "@nuxtjs/font-awesome": "^1.0.3",
     "@nuxtjs/pwa": "^2.6.0",
     "cross-env": "^5.2.0",
     "isomorphic-fetch": "^2.2.1",
-    "@nuxtjs/bulma": "^1.2.0",
-    "@nuxtjs/font-awesome": "^1.0.3",
-    "nuxt": "^2.0.0"
+    "nuxt": "^2.0.0",
+    "postcss-cssnext": "^3.1.0"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",

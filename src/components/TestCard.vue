@@ -6,22 +6,22 @@
     </div>
     <div class="card-footer">
       <span class="card-footer-item">
-        <a 
-          href="#" 
+        <a
+          href="#"
           class="button is-primary">
           <i class="fa fa-thumbs-o-up"/>
         </a>
       </span>
       <span class="card-footer-item">
-        <a 
-          href="#" 
+        <a
+          href="#"
           class="button is-danger">
           <i class="fa fa-thumbs-o-down"/>
         </a>
       </span>
       <span class="card-footer-item">
-        <a 
-          href="#" 
+        <a
+          href="#"
           class="button is-info">
           <i class="fa fa-retweet"/>
         </a>
@@ -34,9 +34,14 @@
 export default {
   props: {
     val: {
-      type: String,
+      type: Object,
       required: false,
-      default: ''
+      default() {
+        return {
+          title: 'test',
+          subtitle: 'test'
+        }
+      }
     }
   }
 }
