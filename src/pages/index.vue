@@ -1,56 +1,62 @@
-
 <template>
-  <section class="container">
-    <div>
-      <h1 class="title">showKs portal site</h1>
-      <h2 class="subtitle">List of alive instances</h2>
-      <el-row>
-        <el-col
-          v-for="instance in instances"
-          :span="6"
-          :key="instance.id">
-          <el-card class="card">
-            <a :href="instance.linkUrl">
-              <img
-                :src="'PLACEHOLDERURL' + instance.thumbnailUrl"
-                class="image"
-              >
-            </a>
-            <div style="padding: 14px;">
-              <el-tag type="info">{{ instance.author.userName }}
-                <a
-                  :href="'https://twitter.com/' + instance.author.twitterId"
-                  target="_blank">
-                  <font-awesome-icon
-                    :icon="['fab', 'twitter']"
-                    class="icon alt"/>
-                </a>
-                <a
-                  :href="'https://github.com/' + instance.author.gitHubId"
-                  target="_blank">
-                  <font-awesome-icon
-                    :icon="['fab', 'github']"
-                    class="icon alt"/>
-              </a></el-tag>
-              <el-tag>{{ instance.author.comment }}</el-tag>
-              <div class="bottom clearfix">
-                <time class="time">{{ dateFormat(instance.createdAt ) }}</time>
-              </div>
-            </div>
-          </el-card>
-        </el-col>
-      </el-row>
-    </div>
-  </section>
+  <div>
+    <section class="section">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-one-third">
+            <test-card
+              v-for="item in items"
+              :key="item.title"
+              :val="item"/>
+          </div>
+          <div class="column is-one-third">
+            <test-card
+              v-for="item in items2"
+              :key="item.title"
+              :val="item"/>
+          </div>
+          <div class="column is-one-third">
+            <test-card
+              v-for="item in items3"
+              :key="item.title"
+              :val="item"/>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 </template>
 
 <script>
+import TestCard from '~/components/TestCard.vue'
 import fetch from 'isomorphic-fetch'
 export default {
+  components: {
+    TestCard
+  },
   async asyncData() {
     const response = await fetch('PLACEHOLDERURL' + '/instances')
     const instances = await response.json()
     return { instances }
+  },
+  data: () => ({
+    items: [
+      { title: 'test 1', subtitle: 'Program-01' },
+      { title: 'test 2', subtitle: 'Program-02' },
+      { title: 'test 3', subtitle: 'Program-03' }
+    ],
+    items2: [{ title: 'test 4', subtitle: 'Program-1' }],
+    items3: [{ title: 'test 5', subtitle: 'Program-1' }]
+  }),
+  mounted() {
+    this.intervalId = setInterval(function() {
+      console.log('hi')
+      asyncData()
+    }, 1000)
+  },
+  beforeDestroy() {
+    console.log('clearInterval')
+    clearInterval(this.intervalId)
   },
   methods: {
     dateFormat(createdAt) {
