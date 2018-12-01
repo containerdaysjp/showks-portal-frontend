@@ -103,19 +103,22 @@ module.exports = {
   /*
    ** Global CSS
    */
-  css: ['element-ui/lib/theme-chalk/index.css'],
+  css: [],
 
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['@/plugins/element-ui', '@/plugins/font-awesome'],
+  plugins: [],
 
   /*
    ** Nuxt.js modules
    */
   modules: [
     // Doc: https://github.com/nuxt-community/axios-module#usage
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/bulma',
+    '@nuxtjs/pwa',
+    '@nuxtjs/font-awesome'
   ],
   /*
    ** Axios module configuration
@@ -131,6 +134,13 @@ module.exports = {
     /*
      ** You can extend webpack config here
      */
+    postcss: {
+      preset: {
+        features: {
+          customProperties: false
+        }
+      }
+    },
     extend(config, ctx) {
       // Run ESLint on save
       if (ctx.isDev && ctx.isClient) {
@@ -143,7 +153,6 @@ module.exports = {
       }
     }
   },
-  modules: ['@nuxtjs/pwa'],
   workbox: {
     dev: true //開発環境でもPWAできるように
   },
