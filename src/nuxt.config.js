@@ -115,7 +115,10 @@ module.exports = {
    */
   modules: [
     // Doc: https://github.com/nuxt-community/axios-module#usage
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/bulma',
+    '@nuxtjs/pwa',
+    '@nuxtjs/font-awesome'
   ],
   /*
    ** Axios module configuration
@@ -132,11 +135,9 @@ module.exports = {
      ** You can extend webpack config here
      */
     postcss: {
-      plugins: {
-        'postcss-cssnext': {
-          features: {
-            customProperties: false
-          }
+      preset: {
+        features: {
+          customProperties: false
         }
       }
     },
@@ -152,7 +153,6 @@ module.exports = {
       }
     }
   },
-  modules: ['@nuxtjs/pwa'],
   workbox: {
     dev: true //開発環境でもPWAできるように
   },
