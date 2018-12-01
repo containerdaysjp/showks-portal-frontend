@@ -7,7 +7,8 @@
             v-for="(instance, index) in instances"
             :key="index"
             class="column is-one-third">
-            <test-card v-for="n in 3"
+            <test-card 
+              v-for="n in 3"
               :key="n"
               :link-url="instance.linkUrl"
               :thumbnail-url="instance.thumbnailUrl"
