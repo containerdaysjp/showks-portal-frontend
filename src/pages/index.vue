@@ -30,14 +30,21 @@ export default {
   },
   async asyncData() {
     const response = await fetch(
-      'http://aggregator.stg.showks.containerdays.jp' + '/instances'
+      'PLACEHOLDERURL' + '/instances'
     )
     let instances = await response.json()
     return { instances }
   },
   mounted() {
     setInterval(function() {
-      asyncData()
+      axios
+        .get('PLACEHOLDERURL' + '/instances')
+        .then(response => {
+          instances = response.data
+        })
+        .catch(error => {
+          console.log(error)
+        })
     }, 5000)
   },
   beforeDestroy() {
