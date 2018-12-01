@@ -4,16 +4,9 @@
       <div class="container">
         <div class="columns is-centered">
           <div class="column is-one-third">
-            <test-card
-              v-for="(instance) in instances"
-              :key="instance.id"
-              :link-url="instance.linkUrl"
-              :thumbnail-url="instance.thumbnailUrl"
-              :user-name="instance.author.userName"
-              :git-hub-id="instance.author.gitHubId"
-              :twitter-id="instance.author.twitterId"
-              :comment="instance.author.comment"
-              :created-at="instance.createdAt"/>
+            <h1 class="title">showKs Portal</h1>
+            <h2 class="subtitle">Sample Application for Japan Container Days</h2>
+            <p>Welcome to Japan Container Days!</p>
           </div>
         </div>
       </div>
@@ -37,7 +30,14 @@ export default {
   },
   mounted() {
     setInterval(function() {
-      asyncData()
+      axios
+        .get('http://aggregator.stg.showks.containerdays.jp' + '/instances')
+        .then(response => {
+          instances = response.data
+        })
+        .catch(error => {
+          console.log(error)
+        })
     }, 5000)
   },
   beforeDestroy() {
