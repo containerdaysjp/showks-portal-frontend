@@ -3,7 +3,7 @@
     <div class="card-image">
       <figure class="image is-4by3">
         <a :href="linkUrl"><img
-          :src="'http://aggregator.stg.showks.containerdays.jp' + thumbnailUrl"
+          :src="'PLACEHOLDERURL' + thumbnailUrl"
           alt="Placeholder image"></a>
       </figure>
     </div>
