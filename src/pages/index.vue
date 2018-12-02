@@ -87,10 +87,14 @@ export default {
     for (var k in instances) {
       instances[k].index = k
       if (instances[k].author.userName.length >= 20) {
-        instances[k].author.userName.substr(0, 20)
+        instances[k].author.userName = instances[k].author.userName.substr(
+          0,
+          20
+        )
       }
       if (instances[k].author.comment.length >= 20) {
-        instances[k].author.comment.substr(0, 20)
+        instances[k].author.comment =
+          instances[k].author.comment.substr(0, 20) + '...'
       }
     }
     // TODO: クソコードすぎるのでなんとかしたい
