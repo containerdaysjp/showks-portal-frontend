@@ -35,7 +35,7 @@ module.exports = {
       {
         hid: 'og:image',
         name: 'og:image',
-        content: '/img/showKs-icon.png'
+        content: '/img/showKs_logo.png'
       },
       {
         hid: 'og:image:width',
@@ -80,7 +80,7 @@ module.exports = {
       {
         hid: 'twitter:image',
         name: 'twitter:image',
-        content: '/img/showKs-icon.png'
+        content: '/img/showKs_logo.png'
       }
     ],
     link: [
