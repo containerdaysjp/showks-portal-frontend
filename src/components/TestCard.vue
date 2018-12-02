@@ -34,6 +34,11 @@
 <script>
 export default {
   props: {
+    id: {
+      type: String,
+      required: true,
+      default: 'linkUrl'
+    },
     linkUrl: {
       type: String,
       required: true,
@@ -56,12 +61,12 @@ export default {
     },
     twitterId: {
       type: String,
-      required: true,
+      required: false,
       default: 'twitterId'
     },
     comment: {
       type: String,
-      required: true,
+      required: false,
       default: 'comment'
     },
     createdAt: {
@@ -73,13 +78,13 @@ export default {
   methods: {
     dateFormat(createdAt) {
       const date = new Date(createdAt)
-      const y = date.getFullYear()
-      const m = date.getMonth() + 1
-      const d = date.getDate()
-      const h = date.getHours() < 10 ? '0' + date.getHours() : date.getHours()
-      const i =
+      let y = date.getFullYear()
+      let m = date.getMonth() + 1
+      let d = date.getDate()
+      let h = date.getHours() < 10 ? '0' + date.getHours() : date.getHours()
+      let i =
         date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()
-      const s =
+      let s =
         date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds()
 
       if (m < 10) {

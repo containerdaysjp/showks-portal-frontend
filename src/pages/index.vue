@@ -5,8 +5,35 @@
         <div class="columns is-centered">
           <div class="column is-one-third">
             <test-card
-              v-for="(instance) in instances"
-              :key="instance.id"
+              v-for="(instance) in leftCards"
+              :key="instance.index"
+              :id="instance.id"
+              :link-url="instance.linkUrl"
+              :thumbnail-url="instance.thumbnailUrl"
+              :user-name="instance.author.userName"
+              :git-hub-id="instance.author.gitHubId"
+              :twitter-id="instance.author.twitterId"
+              :comment="instance.author.comment"
+              :created-at="instance.createdAt"/>
+          </div>
+          <div class="column is-one-third">
+            <test-card
+              v-for="(instance) in centerCards"
+              :key="instance.index"
+              :id="instance.id"
+              :link-url="instance.linkUrl"
+              :thumbnail-url="instance.thumbnailUrl"
+              :user-name="instance.author.userName"
+              :git-hub-id="instance.author.gitHubId"
+              :twitter-id="instance.author.twitterId"
+              :comment="instance.author.comment"
+              :created-at="instance.createdAt"/>
+          </div>
+          <div class="column is-one-third">
+            <test-card
+              v-for="(instance) in rightCards"
+              :key="instance.index"
+              :id="instance.id"
               :link-url="instance.linkUrl"
               :thumbnail-url="instance.thumbnailUrl"
               :user-name="instance.author.userName"
@@ -29,22 +56,25 @@ export default {
     TestCard
   },
   async asyncData() {
-    const response = await fetch(
-      'PLACEHOLDERURL' + '/instances'
-    )
+    let response = await fetch('PLACEHOLDERURL' + '/instances')
     let instances = await response.json()
-    return { instances }
+    for (var k in instances) {
+      instances[k].index = k
+    }
+    let leftCards = instances.filter(function(item, index) {
+      if (item.index % 3 == 0) return true
+    })
+    let centerCards = instances.filter(function(item, index) {
+      if (item.index % 3 == 1) return true
+    })
+    let rightCards = instances.filter(function(item, index) {
+      if (item.index % 3 == 2) return true
+    })
+    return { instances, leftCards, centerCards, rightCards }
   },
   mounted() {
     setInterval(function() {
-      axios
-        .get('PLACEHOLDERURL' + '/instances')
-        .then(response => {
-          instances = response.data
-        })
-        .catch(error => {
-          console.log(error)
-        })
+      asyncData()
     }, 5000)
   },
   beforeDestroy() {
