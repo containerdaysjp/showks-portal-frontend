@@ -79,8 +79,8 @@ export default {
     dateFormat(createdAt) {
       const date = new Date(createdAt)
       const y = date.getFullYear()
-      const m = date.getMonth() + 1
-      const d = date.getDate()
+      let m = date.getMonth() + 1
+      let d = date.getDate()
       const h = date.getHours() < 10 ? '0' + date.getHours() : date.getHours()
       const i =
         date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()
