@@ -86,6 +86,12 @@ export default {
     let instances = await response.json()
     for (var k in instances) {
       instances[k].index = k
+      if (instances[k].author.userName.length >= 20) {
+        instances[k].author.userName.substr(0,20)
+      }
+      if (instances[k].author.comment.length >= 20) {
+        instances[k].author.comment.substr(0,20)
+      }
     }
     // TODO: クソコードすぎるのでなんとかしたい
     let cards0 = instances.filter(function(item, index) {
