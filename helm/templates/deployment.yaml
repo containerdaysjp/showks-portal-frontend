@@ -25,7 +25,7 @@ spec:
                   name: showks-config
                   key: domain
             - name: AGGREGATOR_URL
-              value: http://aggregator$(DOMAIN)
+              value: https://aggregator$(DOMAIN)
           ports:
             - name: app-port
               containerPort: 3000
