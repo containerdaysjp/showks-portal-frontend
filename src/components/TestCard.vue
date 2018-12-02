@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <div class="card-image">
-      <figure class="image is-4by3">
+      <figure class="image is-square">
         <a :href="linkUrl"><img
           :src="'PLACEHOLDERURL' + thumbnailUrl"
           alt="Placeholder image"></a>

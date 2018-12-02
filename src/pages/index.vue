@@ -87,6 +87,7 @@ export default {
     for (var k in instances) {
       instances[k].index = k
     }
+    // TODO: クソコードすぎるのでなんとかしたい
     let cards0 = instances.filter(function(item, index) {
       if (item.index % 5 == 0) return true
     })
