@@ -3,13 +3,37 @@
     <section class="section">
       <div class="container">
         <div class="columns is-centered">
-          <div
-            v-for="(instance, index) in instances"
-            :key="index"
-            class="column is-one-third">
-            <test-card 
-              v-for="n in 3"
-              :key="n"
+          <div class="column is-one-third">
+            <test-card
+              v-for="(instance) in instances"
+              :key="instance.index"
+              :id="instance.id"
+              :link-url="instance.linkUrl"
+              :thumbnail-url="instance.thumbnailUrl"
+              :user-name="instance.author.userName"
+              :git-hub-id="instance.author.gitHubId"
+              :twitter-id="instance.author.twitterId"
+              :comment="instance.author.comment"
+              :created-at="instance.createdAt"/>
+          </div>
+          <div class="column is-one-third">
+            <test-card
+              v-for="(instance) in instances"
+              :key="instance.index"
+              :id="instance.id"
+              :link-url="instance.linkUrl"
+              :thumbnail-url="instance.thumbnailUrl"
+              :user-name="instance.author.userName"
+              :git-hub-id="instance.author.gitHubId"
+              :twitter-id="instance.author.twitterId"
+              :comment="instance.author.comment"
+              :created-at="instance.createdAt"/>
+          </div>
+          <div class="column is-one-third">
+            <test-card
+              v-for="(instance) in instances"
+              :key="instance.index"
+              :id="instance.id"
               :link-url="instance.linkUrl"
               :thumbnail-url="instance.thumbnailUrl"
               :user-name="instance.author.userName"
@@ -32,8 +56,14 @@ export default {
     TestCard
   },
   async asyncData() {
-    const response = await fetch('PLACEHOLDERURL' + '/instances')
+    const response = await fetch(
+      'PLACEHOLDERURL' + '/instances'
+    )
+    let leftCards, centerCards, rightCards
     let instances = await response.json()
+    for (var k in instances) {
+      instances[k].index = k
+    }
     return { instances }
   },
   mounted() {
