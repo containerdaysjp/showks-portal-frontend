@@ -5,7 +5,7 @@
         <div class="columns is-centered">
           <div class="column is-one-third">
             <test-card
-              v-for="(instance) in instances"
+              v-for="(instance) in leftCards"
               :key="instance.index"
               :id="instance.id"
               :link-url="instance.linkUrl"
@@ -18,7 +18,7 @@
           </div>
           <div class="column is-one-third">
             <test-card
-              v-for="(instance) in instances"
+              v-for="(instance) in centerCards"
               :key="instance.index"
               :id="instance.id"
               :link-url="instance.linkUrl"
@@ -31,7 +31,7 @@
           </div>
           <div class="column is-one-third">
             <test-card
-              v-for="(instance) in instances"
+              v-for="(instance) in rightCards"
               :key="instance.index"
               :id="instance.id"
               :link-url="instance.linkUrl"
@@ -56,15 +56,21 @@ export default {
     TestCard
   },
   async asyncData() {
-    const response = await fetch(
-      'PLACEHOLDERURL' + '/instances'
-    )
-    let leftCards, centerCards, rightCards
+    let response = await fetch('PLACEHOLDERURL' + '/instances')
     let instances = await response.json()
     for (var k in instances) {
       instances[k].index = k
     }
-    return { instances }
+    let leftCards = instances.filter(function(item, index) {
+      if (item.index % 3 == 0) return true
+    })
+    let centerCards = instances.filter(function(item, index) {
+      if (item.index % 3 == 1) return true
+    })
+    let rightCards = instances.filter(function(item, index) {
+      if (item.index % 3 == 2) return true
+    })
+    return { instances, leftCards, centerCards, rightCards }
   },
   mounted() {
     setInterval(function() {
