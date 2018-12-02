@@ -3,9 +3,9 @@
     <section class="section">
       <div class="container">
         <div class="columns is-centered">
-          <div class="column is-one-third">
+          <div class="column is-one-fifth">
             <test-card
-              v-for="(instance) in leftCards"
+              v-for="(instance) in cards0"
               :key="instance.index"
               :id="instance.id"
               :link-url="instance.linkUrl"
@@ -16,9 +16,9 @@
               :comment="instance.author.comment"
               :created-at="instance.createdAt"/>
           </div>
-          <div class="column is-one-third">
+          <div class="column is-one-fifth">
             <test-card
-              v-for="(instance) in centerCards"
+              v-for="(instance) in cards1"
               :key="instance.index"
               :id="instance.id"
               :link-url="instance.linkUrl"
@@ -29,9 +29,35 @@
               :comment="instance.author.comment"
               :created-at="instance.createdAt"/>
           </div>
-          <div class="column is-one-third">
+          <div class="column is-one-fifth">
             <test-card
-              v-for="(instance) in rightCards"
+              v-for="(instance) in cards2"
+              :key="instance.index"
+              :id="instance.id"
+              :link-url="instance.linkUrl"
+              :thumbnail-url="instance.thumbnailUrl"
+              :user-name="instance.author.userName"
+              :git-hub-id="instance.author.gitHubId"
+              :twitter-id="instance.author.twitterId"
+              :comment="instance.author.comment"
+              :created-at="instance.createdAt"/>
+          </div>
+          <div class="column is-one-fifth">
+            <test-card
+              v-for="(instance) in cards3"
+              :key="instance.index"
+              :id="instance.id"
+              :link-url="instance.linkUrl"
+              :thumbnail-url="instance.thumbnailUrl"
+              :user-name="instance.author.userName"
+              :git-hub-id="instance.author.gitHubId"
+              :twitter-id="instance.author.twitterId"
+              :comment="instance.author.comment"
+              :created-at="instance.createdAt"/>
+          </div>
+          <div class="column is-one-fifth">
+            <test-card
+              v-for="(instance) in cards4"
               :key="instance.index"
               :id="instance.id"
               :link-url="instance.linkUrl"
@@ -61,16 +87,22 @@ export default {
     for (var k in instances) {
       instances[k].index = k
     }
-    let leftCards = instances.filter(function(item, index) {
-      if (item.index % 3 == 0) return true
+    let cards0 = instances.filter(function(item, index) {
+      if (item.index % 5 == 0) return true
     })
-    let centerCards = instances.filter(function(item, index) {
-      if (item.index % 3 == 1) return true
+    let cards1 = instances.filter(function(item, index) {
+      if (item.index % 5 == 1) return true
     })
-    let rightCards = instances.filter(function(item, index) {
-      if (item.index % 3 == 2) return true
+    let cards2 = instances.filter(function(item, index) {
+      if (item.index % 5 == 2) return true
     })
-    return { instances, leftCards, centerCards, rightCards }
+    let cards3 = instances.filter(function(item, index) {
+      if (item.index % 5 == 3) return true
+    })
+    let cards4 = instances.filter(function(item, index) {
+      if (item.index % 5 == 4) return true
+    })
+    return { cards0, cards1, cards2, cards3, cards4 }
   },
   mounted() {
     setInterval(function() {
