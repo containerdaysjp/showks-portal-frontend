@@ -126,8 +126,11 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .card {
   margin-bottom: 8px;
+}
+.card-content {
+  padding: 0.5rem;
 }
 </style>
