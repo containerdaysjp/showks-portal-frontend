@@ -39,4 +39,5 @@ export default {
     return { instances }
   }
 }
+setTimeout('location.reload()', 5000) //TODO: 時間の関係上
 </script>
