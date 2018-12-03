@@ -1,7 +1,8 @@
 <template>
   <div
-    class="card tooltip"
-    data-tooltip="fdaffdas">
+    :data-tooltip="comment"
+    class="card tooltip is-tooltip-multiline is-tooltip-success"
+  >
     <div class="card-image">
       <figure class="image is-square">
         <a
@@ -15,17 +16,16 @@
     </div>
     <div class="card-content">
       <div class="content is-size-7">
-        <div class="title is-7">{{ trim(userName, 12) }}</div>
-        <!--
-        {{ trim(comment, 20) }}
-        <br>
-        <time datetime="2016-1-1">{{ dateFormat(createdAt) }}</time>
-        -->
+        <div
+          :data-tooltip="userName"
+          class="title is-7 tooltip"
+        >{{ trim(userName, 12) }}</div>
       </div>
       <footer class="card-footer">
         <a
           :href="'https://github.com/' + gitHubId"
-          class="card-footer-item"
+          :data-tooltip="gitHubId"
+          class="card-footer-item tooltip is-tooltip-primary"
           target="_blank"
         ><img
           :src="'https://avatars.githubusercontent.com/' + gitHubId"
@@ -34,7 +34,8 @@
         <a
           v-if="twitterId !== undefined && twitterId !== ''"
           :href="'https://twitter.com/' + twitterId"
-          class="card-footer-item"
+          :data-tooltip="twitterId"
+          class="card-footer-item tooltip is-tooltip-info"
           target="_blank"
         ><i class="fa fa-twitter"/></a>
       </footer>
