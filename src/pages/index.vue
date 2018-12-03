@@ -1,7 +1,7 @@
 <template>
   <div>
     <section class="section">
-      <div class="container is-fullhd">
+      <div class="container is-fluid">
         <div class="columns is-mobile is-multiline is-gapless">
           <div
             v-for="(instance) in instances"
