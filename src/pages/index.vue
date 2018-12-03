@@ -2,7 +2,7 @@
   <div>
     <section class="section">
       <div class="container is-fluid">
-        <about/>>
+        <about/>
         <div class="columns is-mobile is-multiline is-gapless">
           <div
             v-for="(instance) in instances"
@@ -37,6 +37,6 @@ export default {
     let response = await fetch('PLACEHOLDERURL' + '/instances')
     let instances = await response.json()
     return { instances }
-  },
+  }
 }
 </script>
