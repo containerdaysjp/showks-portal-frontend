@@ -1,64 +1,13 @@
 <template>
   <div>
     <section class="section">
-      <div class="container">
-        <div class="columns is-centered">
-          <div class="column is-one-fifth">
+      <div class="container is-fullhd">
+        <div class="columns is-mobile is-multiline is-gapless">
+          <div
+            v-for="(instance) in instances"
+            :key="instance.index"
+            class="column is-one-third-mobile is-one-fifth-tablet is-2-desktop is-1-fullhd">
             <test-card
-              v-for="(instance) in cards0"
-              :key="instance.index"
-              :id="instance.id"
-              :link-url="instance.linkUrl"
-              :thumbnail-url="instance.thumbnailUrl"
-              :user-name="instance.author.userName"
-              :git-hub-id="instance.author.gitHubId"
-              :twitter-id="instance.author.twitterId"
-              :comment="instance.author.comment"
-              :created-at="instance.createdAt"/>
-          </div>
-          <div class="column is-one-fifth">
-            <test-card
-              v-for="(instance) in cards1"
-              :key="instance.index"
-              :id="instance.id"
-              :link-url="instance.linkUrl"
-              :thumbnail-url="instance.thumbnailUrl"
-              :user-name="instance.author.userName"
-              :git-hub-id="instance.author.gitHubId"
-              :twitter-id="instance.author.twitterId"
-              :comment="instance.author.comment"
-              :created-at="instance.createdAt"/>
-          </div>
-          <div class="column is-one-fifth">
-            <test-card
-              v-for="(instance) in cards2"
-              :key="instance.index"
-              :id="instance.id"
-              :link-url="instance.linkUrl"
-              :thumbnail-url="instance.thumbnailUrl"
-              :user-name="instance.author.userName"
-              :git-hub-id="instance.author.gitHubId"
-              :twitter-id="instance.author.twitterId"
-              :comment="instance.author.comment"
-              :created-at="instance.createdAt"/>
-          </div>
-          <div class="column is-one-fifth">
-            <test-card
-              v-for="(instance) in cards3"
-              :key="instance.index"
-              :id="instance.id"
-              :link-url="instance.linkUrl"
-              :thumbnail-url="instance.thumbnailUrl"
-              :user-name="instance.author.userName"
-              :git-hub-id="instance.author.gitHubId"
-              :twitter-id="instance.author.twitterId"
-              :comment="instance.author.comment"
-              :created-at="instance.createdAt"/>
-          </div>
-          <div class="column is-one-fifth">
-            <test-card
-              v-for="(instance) in cards4"
-              :key="instance.index"
               :id="instance.id"
               :link-url="instance.linkUrl"
               :thumbnail-url="instance.thumbnailUrl"
@@ -82,38 +31,11 @@ export default {
     TestCard
   },
   async asyncData() {
-    let response = await fetch('PLACEHOLDERURL' + '/instances')
+    let response = await fetch(
+      'PLACEHOLDERURL' + '/instances'
+    )
     let instances = await response.json()
-    for (var k in instances) {
-      instances[k].index = k
-      if (instances[k].author.userName.length >= 20) {
-        instances[k].author.userName = instances[k].author.userName.substr(
-          0,
-          20
-        )
-      }
-      if (instances[k].author.comment.length >= 20) {
-        instances[k].author.comment =
-          instances[k].author.comment.substr(0, 20) + '...'
-      }
-    }
-    // TODO: クソコードすぎるのでなんとかしたい
-    let cards0 = instances.filter(function(item, index) {
-      if (item.index % 5 == 0) return true
-    })
-    let cards1 = instances.filter(function(item, index) {
-      if (item.index % 5 == 1) return true
-    })
-    let cards2 = instances.filter(function(item, index) {
-      if (item.index % 5 == 2) return true
-    })
-    let cards3 = instances.filter(function(item, index) {
-      if (item.index % 5 == 3) return true
-    })
-    let cards4 = instances.filter(function(item, index) {
-      if (item.index % 5 == 4) return true
-    })
-    return { cards0, cards1, cards2, cards3, cards4 }
+    return { instances }
   },
   mounted() {
     setInterval(function() {
