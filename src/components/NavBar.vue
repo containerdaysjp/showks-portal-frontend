@@ -4,14 +4,14 @@
     role="navigation"
     aria-label="main navigation">
     <div class="navbar-brand">
-      <a
+      <span
         class="navbar-item">
         <img
           src="/img/showKs-icon.png"
           alt="showKs icon"
           width="30"
           height="30">
-      </a>
+      </span>
 
       <div class="navbar-menu">
         <div class="navbar-start">

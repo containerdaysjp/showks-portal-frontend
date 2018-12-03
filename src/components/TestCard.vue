@@ -4,15 +4,19 @@
       <figure class="image is-square">
         <a :href="linkUrl"><img
           :src="'PLACEHOLDERURL' + thumbnailUrl"
-          alt="Placeholder image"></a>
+          alt="Placeholder image"
+          target="_blank"
+        ></a>
       </figure>
     </div>
     <div class="card-content">
       <div class="content is-size-7">
-        <div class="title is-7">{{ trim(userName, 20) }}</div>
+        <div class="title is-7">{{ trim(userName, 12) }}</div>
+        <!--
         {{ trim(comment, 20) }}
         <br>
         <time datetime="2016-1-1">{{ dateFormat(createdAt) }}</time>
+        -->
       </div>
       <footer class="card-footer">
         <a
