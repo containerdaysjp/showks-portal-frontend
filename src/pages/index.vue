@@ -2,6 +2,7 @@
   <div>
     <section class="section">
       <div class="container is-fluid">
+        <about/>
         <div class="columns is-mobile is-multiline is-gapless">
           <div
             v-for="(instance) in instances"
@@ -25,24 +26,17 @@
 
 <script>
 import TestCard from '~/components/TestCard.vue'
+import About from '~/components/About.vue'
 import fetch from 'isomorphic-fetch'
 export default {
   components: {
-    TestCard
+    TestCard,
+    About
   },
   async asyncData() {
     let response = await fetch('PLACEHOLDERURL' + '/instances')
     let instances = await response.json()
     return { instances }
-  },
-  mounted() {
-    setInterval(function() {
-      asyncData()
-    }, 5000)
-  },
-  beforeDestroy() {
-    console.log('clearInterval')
-    clearInterval(this.intervalId)
   }
 }
 </script>
