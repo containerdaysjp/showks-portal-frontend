@@ -12,22 +12,6 @@
           width="30"
           height="30">
       </span>
-
-      <div class="navbar-menu">
-        <div class="navbar-start">
-          <nuxt-link 
-            class="navbar-item" 
-            to="/">
-            Home
-          </nuxt-link>
-
-          <nuxt-link 
-            class="navbar-item" 
-            to="/about">
-            About
-          </nuxt-link>
-        </div>
-      </div>
   </div></nav>
 </template>
 
