@@ -1,11 +1,15 @@
 <template>
-  <div class="card">
+  <div
+    class="card tooltip"
+    data-tooltip="fdaffdas">
     <div class="card-image">
       <figure class="image is-square">
-        <a :href="linkUrl"><img
+        <a
+          :href="linkUrl"
+          target="_blank"
+        ><img
           :src="'PLACEHOLDERURL' + thumbnailUrl"
           alt="Placeholder image"
-          target="_blank"
         ></a>
       </figure>
     </div>
