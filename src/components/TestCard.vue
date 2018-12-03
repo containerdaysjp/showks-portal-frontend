@@ -131,6 +131,6 @@ export default {
   margin-bottom: 8px;
 }
 .card-content {
-  padding: 1rem;
+  padding: 0.5rem;
 }
 </style>
