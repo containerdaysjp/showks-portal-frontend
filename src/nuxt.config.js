@@ -103,7 +103,7 @@ module.exports = {
   /*
    ** Global CSS
    */
-  css: [],
+  css: ['bulma-tooltip/dist/css/bulma-tooltip.min.css'],
 
   /*
    ** Plugins to load before mounting the App
