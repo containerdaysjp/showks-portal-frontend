@@ -31,9 +31,7 @@ export default {
     TestCard
   },
   async asyncData() {
-    let response = await fetch(
-      'PLACEHOLDERURL' + '/instances'
-    )
+    let response = await fetch('PLACEHOLDERURL' + '/instances')
     let instances = await response.json()
     return { instances }
   },
