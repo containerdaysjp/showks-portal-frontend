@@ -15,7 +15,7 @@
       </figure>
     </div>
     <div class="card-content">
-      <div class="content is-size-7">
+      <div class="content is-size-7 override">
         <div
           :data-tooltip="userName"
           class="title is-7 tooltip"
@@ -132,5 +132,8 @@ export default {
 }
 .card-content {
   padding: 0.5rem;
+}
+.override {
+  margin-bottom: 0.5rem;
 }
 </style>

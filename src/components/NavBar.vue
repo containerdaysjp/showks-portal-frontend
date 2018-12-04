@@ -6,11 +6,11 @@
     <div class="navbar-brand">
       <span
         class="navbar-item">
-        <img
+        <a href="https://showks.containerdays.jp"><img
           src="/img/showKs-icon.png"
           alt="showKs icon"
           width="30"
-          height="30">
+          height="30"></a>
       </span>
   </div></nav>
 </template>
