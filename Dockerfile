@@ -3,7 +3,8 @@ FROM node:10.16.0 as builder
 # Create app directory
 WORKDIR /usr/src/app
 
-COPY src .
+COPY src/package.json .
+COPY src/yarn.lock .
 
 # Build devDependency for compliling assets for yarn build
 RUN yarn install \
@@ -11,6 +12,8 @@ RUN yarn install \
   --frozen-lockfile \
   --non-interactive \
   --production=false
+
+COPY src .
 
 RUN yarn build
 
